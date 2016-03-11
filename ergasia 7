@@ -1,0 +1,18 @@
+import json
+import urllib2
+lat=raw_input("Grapse tis suntetagmenes lat: ")
+lon=raw_input("Grapse tis suntetagmenes lon: ")
+api="http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=df0175ceea243a334e754090324aeefa"
+Url =urllib2.urlopen(api)
+print Url.getcode()
+dt= Url.read()
+a=json.loads(dt)
+b= float(a['main']['temp'])
+temp = temp - 273,15
+print str(a['weather'][0]['main'])
+if str(a['weather'][0]['main'])== "Rain":
+    print "I'm singing in the rain!"
+if float(a['main']['temp']) < 5 :
+     print "brrrrrrr"
+elif  float(a['main']['temp'])> 20 :
+    print "nice...."
